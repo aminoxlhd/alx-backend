@@ -9,7 +9,7 @@ class BasicCache(BaseCaching):
     def put(self, key, item):
         """put function"""
         if key and item:
-            self.cache_data = item
+            self.cache_data[key] = item
 
     def get(self, key):
         """get function"""
