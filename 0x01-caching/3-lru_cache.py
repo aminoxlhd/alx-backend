@@ -9,12 +9,13 @@ class LRUCache(BaseCaching):
     def __init__(self):
         """init function"""
         super().__init__()
+        self.order = []
 
     def put(self, key, item):
         """put function"""
         if key and item is None:
             pass
-        else:
+        if key and item:
             if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
                 removed = self.order.pop(0)
                 self.cache_data.pop(removed)
