@@ -29,4 +29,3 @@ class MRUCache(BaseCaching):
             self.order.remove(key)
             self.order.append(key)
             return self.cache_data[key]
-        return None
