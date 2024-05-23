@@ -13,9 +13,7 @@ class MRUCache(BaseCaching):
 
     def put(self, key, item):
         """put function"""
-        if key and item is None:
-            return
-        else:
+        if key and item:
             if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
                 removed = self.order.pop()
                 self.cache_data.pop(removed)
