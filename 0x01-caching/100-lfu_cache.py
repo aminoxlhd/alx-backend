@@ -13,8 +13,6 @@ class LFUCache(BaseCaching):
 
     def put(self, key, item):
         """put function"""
-        if key or item is None:
-            pass
         if key in self.cache_data:
             self.cache_data[key] = item
             self.freq[key] += 1
