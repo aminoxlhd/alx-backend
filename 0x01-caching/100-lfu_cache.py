@@ -13,22 +13,36 @@ class LFUCache(BaseCaching):
 
     def put(self, key, item):
         """put function"""
+        if key is None or item is None:
+            return
+
         if key in self.cache_data:
             self.cache_data[key] = item
-            self.freq[key] += 1
+            self.frequency[key] += 1
+            self.usage_order.move_to_end(key)
         else:
-            if len(self.cache_data) >= self.MAX_ITEMS:
-                min_f = min(self.freq.values())
+            if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
+                min_freq = min(self.frequency.values())
                 least_freq_keys = [
-                    k for k, v in self.freq.items() if v == min_f
+                    k for k, v in self.frequency.items()
+                    if v == min_freq
                 ]
-                lfu_key = min(least_freq_keys, key=self.freq.get)
-                self.cache_data.pop(lfu_key)
-                self.freq.pop(lfu_key)
-                print("DISCARD:", lfu_key)
+                if len(least_freq_keys) > 1:
+                    for k in least_freq_keys:
+                        if k in self.usage_order:
+                            key_to_discard = k
+                            break
+                else:
+                    key_to_discard = least_freq_keys[0]
+
+                del self.cache_data[key_to_discard]
+                del self.frequency[key_to_discard]
+                del self.usage_order[key_to_discard]
+                print(f"DISCARD: {key_to_discard}")
 
             self.cache_data[key] = item
-            self.freq[key] = 1
+            self.frequency[key] = 1
+            self.usage_order[key] = True
 
     def get(self, key):
         """get function"""
