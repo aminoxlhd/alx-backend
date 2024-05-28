@@ -28,7 +28,7 @@ def index():
     """index function"""
     welcome_title = gettext('home_title')
     welcome_header = gettext('home_header')
-    return render_template('3-index.html', title=welcome_title, header=welcome_header)
+    return render_template('3-index.html')
 
 
 if __name__ == '__main__':
