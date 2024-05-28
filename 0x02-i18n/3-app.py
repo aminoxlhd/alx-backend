@@ -23,7 +23,7 @@ def get_locale() -> str:
     return request.accept_languages.best_match(Config.LANGUAGES)
 
 
-@app.route("/")
+@app.route("/", methods=['GET'], strict_slashes=False)
 def index() -> str:
     """index function"""
     return render_template('3-index.html')
