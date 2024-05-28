@@ -21,7 +21,7 @@ app.config.from_object(Config)
 def get_locale() -> str:
     """get_locale function"""
     locale = request.args.get('locale')
-    if locale in Config.LANGUAGES:
+    if locale in app.config["LANGUAGES"]:
         return locale
     return request.accept_languages.best_match(Config.LANGUAGES)
 
