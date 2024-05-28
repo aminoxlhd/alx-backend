@@ -24,7 +24,7 @@ users = {
 }
 
 
-def get_user():
+def get_user() -> dict:
     """get_user function"""
     user_id = request.args.get('login_as')
     if user_id and user_id in users:
