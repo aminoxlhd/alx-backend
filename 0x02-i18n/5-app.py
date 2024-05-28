@@ -15,7 +15,6 @@ class Config(object):
     BABEL_DEFAULT_TIMEZONE = "UTC"
 
 
-#app.config.from_object(Config)
 
 users = {
     1: {"name": "Balou", "locale": "fr", "timezone": "Europe/Paris"},
