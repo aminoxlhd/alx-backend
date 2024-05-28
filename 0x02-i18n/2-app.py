@@ -22,6 +22,7 @@ def get_locale():
     """get_locale function"""
     return request.accept_languages.best_match(Config.LANGUAGES)
 
+
 @app.route("/")
 def index():
     """index function"""
