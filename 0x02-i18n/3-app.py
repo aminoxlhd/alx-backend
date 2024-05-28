@@ -26,8 +26,6 @@ def get_locale():
 @app.route("/")
 def index():
     """index function"""
-    welcome_title = gettext('home_title')
-    welcome_header = gettext('home_header')
     return render_template('3-index.html')
 
 
