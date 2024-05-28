@@ -4,6 +4,7 @@ from flask import Flask, render_template, request, g
 from flask_babel import Babel
 
 app = Flask(__name__)
+app.config.from_object(Config)
 babel = Babel(app)
 
 
@@ -14,7 +15,7 @@ class Config(object):
     BABEL_DEFAULT_TIMEZONE = "UTC"
 
 
-app.config.from_object(Config)
+#app.config.from_object(Config)
 
 users = {
     1: {"name": "Balou", "locale": "fr", "timezone": "Europe/Paris"},
