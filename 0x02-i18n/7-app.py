@@ -38,7 +38,6 @@ def get_timezone() -> str:
     return "UTC"
 
 
-
 def get_user() -> dict:
     """get_user function"""
     user_id = request.args.get('login_as')
